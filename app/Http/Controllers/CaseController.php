@@ -16,6 +16,11 @@ class CaseController extends Controller
         //
     }
 
+    public function fetchtest()
+    {
+        return "fetch test";
+    }
+
     public function fetchEOCdata()
     {
         $eoc_data_url = 'https://tcgbusfs.blob.core.windows.net/blobfs/GetDisasterSummary.gz';
