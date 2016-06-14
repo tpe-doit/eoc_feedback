@@ -15,7 +15,6 @@ $app->get('/', function () {
     return "Hello World";
 });
 $app->get('fetchEOC', 'CaseController@fetchEOCdata');
-$app->get('fetchtest', 'CaseController@fetchtest');
 $app->get('feedback', 'FeedbackController@fetchAll');
 $app->get('feedback/{CaseSN}', 'FeedbackController@fetch');
 $app->post('feedback', 'FeedbackController@create');
