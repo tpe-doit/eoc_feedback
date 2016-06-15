@@ -105,6 +105,15 @@ class FeedbackController extends Controller
 
         $fields = ['CaseSN', 'description', 'solve_suggest'];
         $input_data = $request->all();
+        // check CaseSN exists
+        $case_sn = $input_data['CaseSN'];
+        $row_cnt = DB::table('cases')->where('CaseSN', $case_sn)
+                                    ->count();
+        if ($row_cnt === 0) {
+            return response()->json([
+                'message' => 'invalid CaseSN'
+            ], 404);
+        }
         if ($request->has('photo_link')) {
             $fields[] = 'photo_link';
             $input_data['photo_link'] = json_encode($input_data['photo_link']);
