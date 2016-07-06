@@ -10,7 +10,8 @@ $update_count = 0;
 
 // connect db
 $db_host = getenv('DB_HOST');
-$dsn = "mysql:dbname=eoc_feedback;host={$db_host}";
+$db_database = getenv('DB_DATABASE');
+$dsn = "mysql:dbname={$db_database};host={$db_host}";
 $db_user = getenv('DB_USERNAME');
 $db_pass = getenv('DB_PASSWORD');
 try {
