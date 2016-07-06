@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Hello world";
 });
+Route::get('feedback', 'FeedbackController@fetchAll');
+Route::get('feedback/{CaseSN}', 'FeedbackController@fetch');
+Route::post('feedback', 'FeedbackController@create');
