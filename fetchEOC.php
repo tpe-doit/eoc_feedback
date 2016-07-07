@@ -35,9 +35,9 @@ foreach ($eoc_data_list as $eoc_data) {
         $eoc_data['CaseID'] = trim($eoc_data['CaseID']);
         $eoc_data['CaseSN'] = intval($eoc_data['CaseSN']);
         if ($eoc_data['CaseComplete'] === 'false') {
-            $eoc_data['CaseComplete'] = false;
+            $eoc_data['CaseComplete'] = 0;
         } else {
-            $eoc_data['CaseComplete'] = true;
+            $eoc_data['CaseComplete'] = 1;
         }
         $eoc_data['Wgs84X'] = doubleval($eoc_data['Wgs84X']);
         $eoc_data['Wgs84Y'] = doubleval($eoc_data['Wgs84Y']);
@@ -45,7 +45,7 @@ foreach ($eoc_data_list as $eoc_data) {
         $sql = "update cases set DPName=:DPName, CaseID=:CaseID, CaseSN=:CaseSN, CaseTime=:CaseTime,
             Name=:Name, CaseLocationDistrict=:CaseLocationDistrict, CaseLocationDescription=:CaseLocationDescription,
             CaseDescription=:CaseDescription, CaseComplete=:CaseComplete, PName=:PName, Wgs84X=:Wgs84X,
-            Wgs84Y=:Wgs84Y where DPName=:DPname and CaseSN=:CaseSN";
+            Wgs84Y=:Wgs84Y where DPName='{$eoc_data['DPName']}' and CaseSN='{$eoc_data['CaseSN']}'";
         $sth = $dbh->prepare($sql);
         $result = $sth->execute($eoc_data);
         if ($result) {
@@ -59,9 +59,9 @@ foreach ($eoc_data_list as $eoc_data) {
         $eoc_data['CaseID'] = trim($eoc_data['CaseID']);
         $eoc_data['CaseSN'] = intval($eoc_data['CaseSN']);
         if ($eoc_data['CaseComplete'] === 'false') {
-            $eoc_data['CaseComplete'] = false;
+            $eoc_data['CaseComplete'] = 0;
         } else {
-            $eoc_data['CaseComplete'] = true;
+            $eoc_data['CaseComplete'] = 1;
         }
         $eoc_data['Wgs84X'] = doubleval($eoc_data['Wgs84X']);
         $eoc_data['Wgs84Y'] = doubleval($eoc_data['Wgs84Y']);
