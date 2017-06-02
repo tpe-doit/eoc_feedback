@@ -21,6 +21,7 @@ try {
 }
 
 foreach ($eoc_data_list as $eoc_data) {
+    echo json_encode($eoc_data);
     // check duplicate
     $sql = 'select * from cases where DPName=? and CaseSN=?';
     $sth = $dbh->prepare($sql);
