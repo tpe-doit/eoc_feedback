@@ -20,10 +20,7 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
 }
 
-var_dump($eoc_data_list);
-
 foreach ($eoc_data_list as $eoc_data) {
-    echo json_encode($eoc_data);
     // check duplicate
     $sql = 'select * from cases where DPName=? and CaseSN=?';
     $sth = $dbh->prepare($sql);
