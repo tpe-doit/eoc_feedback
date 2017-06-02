@@ -45,7 +45,7 @@ foreach ($eoc_data_list as $eoc_data) {
         $sql = "update cases set DPName=:DPName, CaseID=:CaseID, CaseSN=:CaseSN, CaseTime=:CaseTime,
             Name=:Name, CaseLocationDistrict=:CaseLocationDistrict, CaseLocationDescription=:CaseLocationDescription,
             CaseDescription=:CaseDescription, CaseComplete=:CaseComplete, PName=:PName, Wgs84X=:Wgs84X,
-            Wgs84Y=:Wgs84Y where DPName='{$eoc_data['DPName']}' and CaseSN='{$eoc_data['CaseSN']}'";
+            Wgs84Y=:Wgs84Y, CaseCommunicatorUnit=:CaseCommunicatorUnit, CaseSerious=:CaseSerious where DPName='{$eoc_data['DPName']}' and CaseSN='{$eoc_data['CaseSN']}'";
         $sth = $dbh->prepare($sql);
         $result = $sth->execute($eoc_data);
         if ($result) {
@@ -67,9 +67,9 @@ foreach ($eoc_data_list as $eoc_data) {
         $eoc_data['Wgs84Y'] = doubleval($eoc_data['Wgs84Y']);
         // insert data to database
         $sql = "insert into cases (DPName, CaseID, CaseSN, CaseTime, Name, CaseLocationDistrict,
-            CaseLocationDescription, CaseDescription, CaseComplete, PName, Wgs84X, Wgs84Y) values (
+            CaseLocationDescription, CaseDescription, CaseComplete, PName, Wgs84X, Wgs84Y, CaseCommunicatorUnit, CaseSerious) values (
             :DPName, :CaseID, :CaseSN, :CaseTime, :Name, :CaseLocationDistrict,
-            :CaseLocationDescription, :CaseDescription, :CaseComplete, :PName, :Wgs84X, :Wgs84Y)";
+            :CaseLocationDescription, :CaseDescription, :CaseComplete, :PName, :Wgs84X, :Wgs84Y, :CaseCommunicatorUnit, :CaseSerious)";
         $sth = $dbh->prepare($sql);
         $result = $sth->execute($eoc_data);
         if ($result) {
